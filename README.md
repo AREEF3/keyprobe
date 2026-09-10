@@ -4,7 +4,7 @@
 
 ### *One Key. Instant Truth.*
 
-**A zero-knowledge, client-side API verification engine & diagnostic suite for AI developers.**
+**A zero-knowledge, client-side API key tester & diagnostic suite for AI developers.**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.2+-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -36,7 +36,7 @@
 
 ## 📖 Overview
 
-**KeyProbe** is an ultra-fast, client-side cryptographic and HTTP verification utility designed to validate AI and cloud API keys instantly without sacrificing security. 
+**KeyProbe** is an ultra-fast, zero-knowledge client-side API key tester and diagnostic utility designed to validate AI and cloud API keys instantly without sacrificing security. 
 
 Most online API testing tools route sensitive credentials through a third-party proxy backend, creating severe risks of key leakage, credential harvesting, or unintentional logging. **KeyProbe eliminates the middleman**: all probes are dispatched directly from your browser sandbox straight to the official provider endpoints via the standard Fetch API.
 
@@ -76,8 +76,8 @@ Most online API testing tools route sensitive credentials through a third-party 
 - ⌨️ **Keyboard-First Workflow**  
   Press <kbd>⌘</kbd>+<kbd>Enter</kbd> (or <kbd>Ctrl</kbd>+<kbd>Enter</kbd>) to trigger instant probes without lifting your fingers from the keyboard.
 
-- 📋 **Automated Result Masking & One-Click Export**  
-  Recent history items automatically mask secret values (`sk-proj-••••••••4f2a`), and complete diagnostic results can be copied to your clipboard in one click.
+- 📋 **Zero History Retention & One-Click Export**  
+  Probes are never retained, logged, or stored anywhere. Complete diagnostic results can be copied directly to your clipboard in one click.
 
 ---
 

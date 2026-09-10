@@ -1,5 +1,5 @@
 import { detectProvider, getProvider, PROVIDERS } from './providers';
-import { els, setLoading, showMsg, renderResult, hideResult, appendHistory, showDetectedBadge, updateKeyMeta, activateProviderTab, toggleVisibility, copyResult, clearMsg, } from './ui';
+import { els, setLoading, showMsg, renderResult, hideResult, showDetectedBadge, updateKeyMeta, activateProviderTab, toggleVisibility, copyResult, clearMsg, } from './ui';
 // ── App state ────────────────────────────────────────────────────────────────
 const state = {
     provider: 'auto',
@@ -84,7 +84,6 @@ async function runProbe() {
         ? `Key verified successfully — ${result.providerLabel} responded with HTTP ${result.status}.`
         : `Verification failed — ${result.detail}`, result.ok ? 'success' : 'error');
     renderResult(result);
-    appendHistory(result, maskKey(key));
 }
 // ── Custom endpoint probe ────────────────────────────────────────────────────
 async function probeCustom(key) {
@@ -126,12 +125,6 @@ async function probeCustom(key) {
             detail: err instanceof Error ? err.message : 'Network error',
         };
     }
-}
-// ── Mask key for history display ─────────────────────────────────────────────
-function maskKey(key) {
-    if (key.length <= 8)
-        return '••••••••';
-    return key.slice(0, 6) + '••••••••' + key.slice(-4);
 }
 // ── Clear ────────────────────────────────────────────────────────────────────
 function clearAll() {

@@ -21,8 +21,6 @@ export const els = {
     rcLatency: $('#rc-latency'),
     rcDocs: $('#rc-docs'),
     keyLengthBadge: $('#key-length'),
-    historyList: $('#history-list'),
-    historySection: $('#history-section'),
     copyBtn: $('#copy-result-btn'),
 };
 const EYE_OPEN = 'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z';
@@ -107,23 +105,6 @@ export function renderResult(result) {
 export function hideResult() {
     els.resultCard.style.display = 'none';
     els.copyBtn.style.display = 'none';
-}
-// ── History ──────────────────────────────────────────────────────────────────
-export function appendHistory(result, maskedKey) {
-    els.historySection.style.display = '';
-    const item = document.createElement('div');
-    item.className = `history-item ${result.ok ? 'ok' : 'fail'}`;
-    item.innerHTML = `
-    <span class="hi-provider">${result.providerLabel}</span>
-    <span class="hi-key">${maskedKey}</span>
-    <span class="hi-status ${result.ok ? 'ok' : 'fail'}">${result.ok ? 'Valid' : 'Invalid'}</span>
-    <span class="hi-latency">${result.latency}ms</span>
-  `;
-    els.historyList.prepend(item);
-    // Keep max 5 entries
-    const items = els.historyList.querySelectorAll('.history-item');
-    if (items.length > 5)
-        items[items.length - 1]?.remove();
 }
 // ── Copy result to clipboard ─────────────────────────────────────────────────
 export function copyResult(result) {

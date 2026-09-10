@@ -3,7 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KeyProbe — API Key Verification</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>KeyProbe — Free Online API Key Tester & Validator (OpenAI, Claude, Gemini)</title>
+  <meta name="title" content="KeyProbe — Free Online API Key Tester & Validator (OpenAI, Claude, Gemini)" />
+  <meta
+    name="description"
+    content="Free online API key tester and validator. Instantly test your API key for OpenAI, Anthropic Claude, Google Gemini, Mistral, and custom endpoints with zero-knowledge privacy. No backend, no proxy, no storage."
+  />
+  <meta
+    name="keywords"
+    content="api key tester, test api key, test your api key, api key checker, api key validator, openai api key tester, claude api key tester, gemini api key tester, mistral api key tester, llm api key validator, check api key validity, api probe, zero knowledge api tester"
+  />
+  <meta name="author" content="KeyProbe" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)" />
+
+  <!-- Open Graph / Facebook / LinkedIn / Discord -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KeyProbe — Free Online API Key Tester & Validator" />
+  <meta
+    property="og:description"
+    content="Test your API keys safely from your browser. Zero storage, zero tracking, instant HTTP response and latency testing for OpenAI, Claude, Gemini, Mistral, and custom endpoints."
+  />
+  <meta property="og:image" content="./image.png" />
+  <meta property="og:image:alt" content="KeyProbe API Key Tester interface preview" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KeyProbe — Free Online API Key Tester & Validator" />
+  <meta
+    name="twitter:description"
+    content="Test your API keys safely from your browser. Zero storage, zero tracking, instant HTTP response and latency testing for OpenAI, Claude, Gemini, Mistral, and custom endpoints."
+  />
+  <meta name="twitter:image" content="./image.png" />
+
+  <!-- Schema.org JSON-LD Structured Data for Google Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "KeyProbe",
+    "alternateName": [
+      "API Key Tester",
+      "API Key Validator",
+      "Test Your API Key",
+      "AI API Key Checker"
+    ],
+    "description": "Free, zero-knowledge client-side API key tester and validator for OpenAI, Anthropic Claude, Google Gemini, Mistral, and custom endpoints.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "API key tester for OpenAI, Claude, Gemini, Mistral, Cohere",
+      "Automatic provider detection based on key prefix",
+      "Real-time HTTP status verification and latency testing",
+      "Zero-knowledge architecture with zero key retention or proxying",
+      "Custom endpoint probe for Ollama, vLLM, and enterprise APIs"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"
@@ -19,7 +85,7 @@
         <span class="mobile-monogram">K</span>
         <div>
           <span class="brand-name">KeyProbe</span>
-          <span class="wm-label" style="display:block; margin-top:2px;">API Verification</span>
+          <span class="wm-label" style="display:block; margin-top:2px;">API Key Tester & Verification</span>
         </div>
       </div>
       <button id="theme-toggle-mobile" class="theme-toggle-mobile" aria-label="Toggle theme">
@@ -34,19 +100,18 @@
   </header>
 
   <!-- ── LEFT PANEL ─────────────────────────────────────────────── -->
-  <aside class="panel-left" aria-hidden="true">
+  <aside class="panel-left">
     <div class="lines"><span></span><span></span><span></span></div>
     <div class="left-content">
 
       <div class="monogram">K</div>
 
       <div class="left-mid">
-        <p class="eyebrow">KeyProbe — v1.0</p>
+        <p class="eyebrow">KeyProbe — Free API Key Tester</p>
         <h1>One key.<br><em>Instant truth.</em></h1>
         <p class="left-desc">
-          Paste any API key and receive a live HTTP probe against the provider's
-          endpoint. No storage. No logging. The request leaves your browser
-          and goes nowhere else.
+          The zero-knowledge API key tester. Paste any API key to test and verify with a live HTTP probe against the provider's
+          endpoint. No storage. No proxy. No logging. The request leaves your browser and goes nowhere else.
         </p>
       </div>
 
@@ -77,7 +142,7 @@
       <div class="wordmark">
         <span class="brand-name">KeyProbe</span>
         <span class="wm-divider"></span>
-        <span class="wm-label">API Verification</span>
+        <span class="wm-label">API Key Tester</span>
       </div>
 
       <!-- Shortcut hint -->
@@ -188,12 +253,6 @@
         </button>
         <button type="button" id="copy-result-btn" class="ghost-btn" style="display:none;">Copy result</button>
         <button type="button" id="clear-btn" class="ghost-btn">Clear</button>
-      </div>
-
-      <!-- History -->
-      <div id="history-section" class="history-section" style="display:none;">
-        <p class="field-eyebrow" style="margin-bottom:14px;">Recent Probes</p>
-        <div id="history-list" class="history-list"></div>
       </div>
 
     </div>

@@ -6,7 +6,6 @@ import {
   showMsg,
   renderResult,
   hideResult,
-  appendHistory,
   showDetectedBadge,
   updateKeyMeta,
   activateProviderTab,
@@ -110,7 +109,6 @@ async function runProbe(): Promise<void> {
   );
 
   renderResult(result);
-  appendHistory(result, maskKey(key));
 }
 
 // ── Custom endpoint probe ────────────────────────────────────────────────────
@@ -154,12 +152,6 @@ async function probeCustom(key: string): Promise<ProbeResult> {
       detail: err instanceof Error ? err.message : 'Network error',
     };
   }
-}
-
-// ── Mask key for history display ─────────────────────────────────────────────
-function maskKey(key: string): string {
-  if (key.length <= 8) return '••••••••';
-  return key.slice(0, 6) + '••••••••' + key.slice(-4);
 }
 
 // ── Clear ────────────────────────────────────────────────────────────────────

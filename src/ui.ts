@@ -25,8 +25,6 @@ export const els = {
   rcLatency:       $<HTMLElement>('#rc-latency'),
   rcDocs:          $<HTMLAnchorElement>('#rc-docs'),
   keyLengthBadge:  $<HTMLElement>('#key-length'),
-  historyList:     $<HTMLElement>('#history-list'),
-  historySection:  $<HTMLElement>('#history-section'),
   copyBtn:         $<HTMLButtonElement>('#copy-result-btn'),
 };
 
@@ -127,26 +125,6 @@ export function renderResult(result: ProbeResult): void {
 export function hideResult(): void {
   els.resultCard.style.display = 'none';
   els.copyBtn.style.display = 'none';
-}
-
-// ── History ──────────────────────────────────────────────────────────────────
-export function appendHistory(result: ProbeResult, maskedKey: string): void {
-  els.historySection.style.display = '';
-
-  const item = document.createElement('div');
-  item.className = `history-item ${result.ok ? 'ok' : 'fail'}`;
-  item.innerHTML = `
-    <span class="hi-provider">${result.providerLabel}</span>
-    <span class="hi-key">${maskedKey}</span>
-    <span class="hi-status ${result.ok ? 'ok' : 'fail'}">${result.ok ? 'Valid' : 'Invalid'}</span>
-    <span class="hi-latency">${result.latency}ms</span>
-  `;
-
-  els.historyList.prepend(item);
-
-  // Keep max 5 entries
-  const items = els.historyList.querySelectorAll('.history-item');
-  if (items.length > 5) items[items.length - 1]?.remove();
 }
 
 // ── Copy result to clipboard ─────────────────────────────────────────────────
