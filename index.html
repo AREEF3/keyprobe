@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeyProbe — API Key Verification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <!-- ── MOBILE HEADER (visible only on mobile) ───────────────── -->
+  <header class="mobile-header" aria-label="KeyProbe">
+    <div class="mobile-header-inner">
+      <div class="mobile-brand">
+        <span class="mobile-monogram">K</span>
+        <div>
+          <span class="brand-name">KeyProbe</span>
+          <span class="wm-label" style="display:block; margin-top:2px;">API Verification</span>
+        </div>
+      </div>
+      <button id="theme-toggle-mobile" class="theme-toggle-mobile" aria-label="Toggle theme">
+        <span class="theme-icon theme-icon--dark">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+        <span class="theme-icon theme-icon--light">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── LEFT PANEL ─────────────────────────────────────────────── -->
+  <aside class="panel-left" aria-hidden="true">
+    <div class="lines"><span></span><span></span><span></span></div>
+    <div class="left-content">
+
+      <div class="monogram">K</div>
+
+      <div class="left-mid">
+        <p class="eyebrow">KeyProbe — v1.0</p>
+        <h1>One key.<br><em>Instant truth.</em></h1>
+        <p class="left-desc">
+          Paste any API key and receive a live HTTP probe against the provider's
+          endpoint. No storage. No logging. The request leaves your browser
+          and goes nowhere else.
+        </p>
+      </div>
+
+      <div class="left-footer">
+        <p class="eyebrow" style="margin-bottom: 18px;">Supported Providers</p>
+        <ul class="provider-list">
+          <li><span class="pdot"></span>OpenAI</li>
+          <li><span class="pdot"></span>Anthropic</li>
+          <li><span class="pdot"></span>Google Gemini</li>
+          <li><span class="pdot"></span>Cohere</li>
+          <li><span class="pdot"></span>Mistral</li>
+          <li><span class="pdot"></span>Custom Endpoint</li>
+        </ul>
+        <p class="left-note">
+          Keys are never stored, transmitted to a third party, or written to disk.
+          All probes are direct browser-to-provider requests.
+        </p>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ── RIGHT PANEL ────────────────────────────────────────────── -->
+  <main class="panel-right">
+    <div class="form-area">
+
+      <!-- Wordmark -->
+      <div class="wordmark">
+        <span class="brand-name">KeyProbe</span>
+        <span class="wm-divider"></span>
+        <span class="wm-label">API Verification</span>
+      </div>
+
+      <!-- Shortcut hint -->
+      <p class="shortcut-hint">
+        <kbd>⌘</kbd><kbd>↵</kbd> to probe
+      </p>
+
+      <!-- Provider selector -->
+      <div class="section-block">
+        <p class="field-eyebrow">Provider</p>
+        <div class="provider-tabs">
+          <button type="button" class="ptab active" data-p="auto">Auto-detect</button>
+          <button type="button" class="ptab" data-p="openai">OpenAI</button>
+          <button type="button" class="ptab" data-p="anthropic">Anthropic</button>
+          <button type="button" class="ptab" data-p="gemini">Gemini</button>
+          <button type="button" class="ptab" data-p="cohere">Cohere</button>
+          <button type="button" class="ptab" data-p="mistral">Mistral</button>
+          <button type="button" class="ptab" data-p="custom">Custom</button>
+        </div>
+      </div>
+
+      <!-- API Key field -->
+      <div class="section-block">
+        <p class="field-eyebrow">
+          API Key
+          <span id="key-length" class="key-length-badge" style="display:none;"></span>
+        </p>
+        <div class="field">
+          <input
+            type="password"
+            id="key-input"
+            class="key-input"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Paste your API key here"
+            aria-label="API Key"
+          />
+          <div class="field-line"></div>
+          <button type="button" id="eye-btn" class="eye-btn" aria-label="Toggle visibility">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path id="eye-path" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Detected badge -->
+        <div id="detected-badge" class="detected-badge" style="display:none;">
+          <span class="detected-dot"></span>
+          <span id="detected-label"></span>
+        </div>
+      </div>
+
+      <!-- Custom endpoint (hidden by default) -->
+      <div id="custom-wrap" class="section-block custom-fields" style="display:none;">
+        <div class="field">
+          <input type="text" id="custom-endpoint" autocomplete="off" spellcheck="false" placeholder=" " />
+          <label for="custom-endpoint">Endpoint URL</label>
+          <div class="field-line"></div>
+          <span class="field-hint">e.g. https://api.example.com/v1/models</span>
+        </div>
+        <div class="field">
+          <input type="text" id="custom-header" autocomplete="off" placeholder=" " />
+          <label for="custom-header">Auth Header Name</label>
+          <div class="field-line"></div>
+          <span class="field-hint">Defaults to Authorization if left blank</span>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div id="msg-box" class="msg-box"></div>
+
+      <!-- Result card -->
+      <div id="result-card" class="result-card" style="display:none;">
+        <div class="result-row">
+          <span class="result-label">Provider</span>
+          <span id="rc-provider" class="result-value">—</span>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-row">
+          <span class="result-label">Verdict</span>
+          <span id="rc-status" class="result-value">—</span>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-row">
+          <span class="result-label">HTTP Status</span>
+          <span id="rc-code" class="result-value">—</span>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-row">
+          <span class="result-label">Round-trip</span>
+          <span id="rc-latency" class="result-value">—</span>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-row">
+          <span class="result-label">Docs</span>
+          <a id="rc-docs" class="result-link" href="#" target="_blank" rel="noopener" style="display:none;">
+            Open provider console
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions-row">
+        <button type="button" id="submit-btn" class="cta-btn">
+          <span>Probe Key</span>
+          <span class="cta-line"></span>
+        </button>
+        <button type="button" id="copy-result-btn" class="ghost-btn" style="display:none;">Copy result</button>
+        <button type="button" id="clear-btn" class="ghost-btn">Clear</button>
+      </div>
+
+      <!-- History -->
+      <div id="history-section" class="history-section" style="display:none;">
+        <p class="field-eyebrow" style="margin-bottom:14px;">Recent Probes</p>
+        <div id="history-list" class="history-list"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Theme toggle -->  
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
+    <span class="theme-icon theme-icon--dark">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </span>
+    <span class="theme-icon theme-icon--light">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </span>
+    <span class="theme-label">Light</span>
+  </button>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
